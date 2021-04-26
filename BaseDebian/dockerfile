@@ -1,0 +1,13 @@
+FROM debian
+
+RUN apt update && apt install -y openssh-server sudo
+RUN useradd -m eby
+RUN echo "eby:xp" | chpasswd
+RUN mkdir /home/eby/.ssh
+COPY id_rsa.pub /home/eby/.ssh/authorized_keys
+RUN chmod 700 /home/eby/.ssh
+RUN chmod 600 /home/eby/.ssh/authorized_keys
+RUN chown eby:eby -R /home/eby/.ssh/
+RUN mkdir /var/run/sshd
+
+CMD /usr/sbin/sshd -D
