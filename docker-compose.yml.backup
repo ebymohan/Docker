@@ -1,8 +1,17 @@
 version: '3'
 services:
+  postgres:
+    container_name: postgres
+    image: postgres-covidportal-image
+    build:
+      context: Postgres
+    ports: 
+      - "5432:5432"
+    networks: 
+      - net
   covidportal:
     container_name: covidportal
-    image: covidportal:springboot
+    image: sprinboot-covidportal-image
     build:
       context: CovidPortal  
     ports: 

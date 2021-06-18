@@ -1,5 +1,1 @@
-Jenkins/JenkinsVolume/
-BaseDebian/id_rsa
-BaseDebian/id_rsa.pub
-BaseDebian/test/pem_id_rsa.pub
-BaseDebian/test/pem_id_rsa
+Jenkins/JenkinsVolume/*

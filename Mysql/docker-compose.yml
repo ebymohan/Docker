@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mysql:
+    container_name: mysql
+    image: mysqlimage
+    build:
+      context: .
+    ports: 
+      - "3306:3306"
+networks: 
+  default: 
+    external: 
+      name: net

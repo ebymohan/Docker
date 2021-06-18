@@ -1,0 +1,25 @@
+FROM debian AS clone
+RUN apt update && apt install -y git
+RUN mkdir /tmp/covidportal
+WORKDIR /tmp/covidportal
+RUN git clone https://github.com/ebymohan/CovidPortal.git
+
+
+#FROM maven:3.5-jdk-8-alpine AS build
+FROM openjdk AS build
+RUN mkdir /tmp/covidportal
+WORKDIR /tmp/covidportal
+COPY --from=clone /tmp/covidportal/CovidPortal/ . 
+RUN chmod 744 mvnw
+RUN ls -al
+EXPOSE 8080
+#RUN ./mvnw clean package
+CMD ./mvnw spring-boot:run
+
+
+#FROM openjdk:8-jre-alpine
+#RUN mkdir /srv/covidportal
+#WORKDIR /srv/covidportal
+#COPY --from=build /tmp/covidportal/target/*.jar /srv/covidportal/covidportal.jar
+#EXPOSE 8080
+#CMD ["java -jar covidportal.jar"]

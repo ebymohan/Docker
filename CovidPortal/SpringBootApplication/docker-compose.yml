@@ -4,12 +4,10 @@ services:
     container_name: covidportal
     image: covidportal:springboot
     build:
-      context: CovidPortal  
+      context: .  
     ports: 
       - "8080:8080"
-    depends_on:
-      - "postgres"
-    networks: 
-      - net
-networks:
-  net:
+networks: 
+  default: 
+    external: 
+      name: net

@@ -1,0 +1,29 @@
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins
+    ports: 
+      - "8080:8080"
+    volumes: 
+      - "$PWD/Jenkins/JenkinsVolume:/var/jenkins_home"
+    networks: 
+      - net
+  debian:
+    container_name: ssh_debian
+    image: ssh_debian_image
+    build:
+      context: BaseDebian  
+    networks: 
+      - net
+  postgres:
+    container_name: postgres
+    image: postgres-covidportal
+    build:
+      context: Postgres
+    ports: 
+      - "5432:5432"
+    networks: 
+      - net
+networks:
+  net:
