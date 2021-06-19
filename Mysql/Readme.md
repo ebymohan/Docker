@@ -1,2 +1,2 @@
-docker build --force-rm -t postgres:covidportal .
-docker container run -dt -p 5432:5432 --name postgres postgres:covidportal
+docker build --force-rm -t mysqlimage .
+docker container run -dt -p 3306:3306 --name mysql mysqlimage
