@@ -7,3 +7,5 @@ flush privileges;
 INSERT INTO `users` VALUES (1, 'admin', 'admin123');
 INSERT INTO `users` VALUES (2, 'eby', 'eby123');
 INSERT INTO `users` VALUES (3, 'rohit', 'rohit123');
+use mysql;
+ALTER USER 'devsecops'@'%' IDENTIFIED WITH mysql_native_password BY 'devsecops123';
